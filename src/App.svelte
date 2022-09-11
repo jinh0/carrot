@@ -1,11 +1,15 @@
 <script lang="ts">
-  let count = 0
+  // Load database from Firebase
+  import { setContext } from 'svelte'
+  import { addDoc, collection, doc } from 'firebase/firestore'
+  import db from './utils/firebase'
 
-  const addOne = () => count += 1
+  setContext('db', db)
+
+  // Add item
+  const addItem = async () => {
+    await addDoc(collection(db, 'items'), { name: 'carrot' })
+  }
 </script>
 
-<main>
-Hi Christine
-
-<button on:click={addOne}>count is {count}</button>
-</main>
+<button on:click={addItem} />
