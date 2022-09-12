@@ -12,4 +12,4 @@
   }
 </script>
 
-<button on:click={addItem} />
+<button on:click={addItem}>Add item</button>
